@@ -4,22 +4,19 @@ import { reduxForm, Field, SubmissionError } from 'redux-form';
 import Input from '../../components/common/Input';
 import Button from '../../components/common/Button';
 import Validation from '../../utils/Validation';
+import { setItem } from '../../utils/storage';
 import api from '../../utils/api';
 import { colors } from '../../styles';
 
 class LoginForm extends React.Component {
   state = { isEmailSent: false, error: null };
 
-  login = ({ email, password }) => {
-    return api.login({ username: email, password }).then(
-      () => this.setState({ isEmailSent: true }),
-      error => {
-        if (error.response.status === 401) {
-          throw new SubmissionError({ email: 'invalid username or password' });
-        }
+  login = ({ email, password }) =>
+    this.props.login({ email, password }).catch(error => {
+      if (error.response.status === 401) {
+        throw new SubmissionError({ email: 'invalid username or password' });
       }
-    );
-  };
+    });
 
   render() {
     return (
@@ -28,12 +25,7 @@ class LoginForm extends React.Component {
           <Field name="email" component={Input} label="email" />
         </View>
         <View style={styles.passwordInput}>
-          <Field
-            name="password"
-            component={Input}
-            label="password"
-            secureTextEntry
-          />
+          <Field name="password" component={Input} label="password" secureTextEntry />
         </View>
         <Button
           containerStyle={styles.loginBtn}

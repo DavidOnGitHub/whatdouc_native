@@ -11,55 +11,55 @@ import {
 import { colors } from '../../styles';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
+import { setItem } from '../../utils/storage';
+import api from '../../utils/api';
+import { navigate } from '../../utils/navigator';
 
 export default class Login extends React.Component {
   state = {
     isLogin: false
   };
 
+  login = ({ email, password }) =>
+    api.login({ username: email, password }).then(({ token, user }) => {
+      setItem('token', token);
+      setItem('user', user);
+      if (this.props.navigation.getParam('prevRoute')) {
+        this.props.navigation.goBack();
+      } else {
+        navigate(this.props.navigation, 'Map');
+      }
+    });
+
   render() {
     const { isLogin } = this.state;
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Image
-          style={styles.logo}
-          source={require('../../assets/icons/app-icon.png')}
-        />
+        <Image style={styles.logo} source={require('../../assets/icons/app-icon.png')} />
         <View style={styles.mainShadow}>
           <View style={styles.main}>
             <View style={styles.tabs}>
               <View style={[styles.tab, !isLogin && styles.activeTab]}>
-                <TouchableOpacity
-                  onPress={() => this.setState({ isLogin: false })}
-                >
-                  <Text style={[styles.tabText, !isLogin && styles.activeText]}>
-                    Sign up
-                  </Text>
+                <TouchableOpacity onPress={() => this.setState({ isLogin: false })}>
+                  <Text style={[styles.tabText, !isLogin && styles.activeText]}>Sign up</Text>
                 </TouchableOpacity>
               </View>
               <View style={[styles.tab, isLogin && styles.activeTab]}>
-                <TouchableOpacity
-                  onPress={() => this.setState({ isLogin: true })}
-                >
-                  <Text style={[styles.tabText, isLogin && styles.activeText]}>
-                    Log in
-                  </Text>
+                <TouchableOpacity onPress={() => this.setState({ isLogin: true })}>
+                  <Text style={[styles.tabText, isLogin && styles.activeText]}>Log in</Text>
                 </TouchableOpacity>
               </View>
             </View>
             <View style={styles.form}>
-              {this.state.isLogin ? <LoginForm /> : <SignupForm />}
+              {this.state.isLogin ? <LoginForm login={this.login} /> : <SignupForm />}
             </View>
           </View>
         </View>
         <View style={styles.facebookLoginContainer}>
           <TouchableHighlight>
             <View style={styles.facebookLogin}>
-              <Image
-                style={styles.fbIcon}
-                source={require('../../assets/icons/facebook.png')}
-              />
+              <Image style={styles.fbIcon} source={require('../../assets/icons/facebook.png')} />
               <View style={styles.fbBtn}>
                 <Text style={styles.fbText}>Sign in with Facebook</Text>
               </View>

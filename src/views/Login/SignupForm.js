@@ -1,28 +1,27 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { reduxForm, Field, SubmissionError } from 'redux-form';
-import Input from '../../components/common/Input';
-import Button from '../../components/common/Button';
-import Validation from '../../utils/Validation';
-import api from '../../utils/api';
+import React from "react";
+import { View, StyleSheet, Text } from "react-native";
+import { reduxForm, Field, SubmissionError } from "redux-form";
+import Input from "../../components/common/Input";
+import Button from "../../components/common/Button";
+import Validation from "../../utils/Validation";
+import api from "../../utils/api";
 
 class SignupForm extends React.Component {
   state = { emailSentTo: null };
 
-  signUp = ({ email }) => {
-    return api.register({ email }).then(
+  signUp = ({ email }) => console.log('sign up') || 
+    api.register({ email }).then(
       () => this.setState({ emailSentTo: email }),
       error => {
         throw new SubmissionError({ email: error.response.data });
       }
     );
-  };
 
   render() {
     return this.state.emailSentTo ? (
       <View style={styles.container}>
         <Text style={styles.emailSentMsg}>
-          A temporary password has been sent to{' '}
+          A temporary password has been sent to{" "}
           <Text style={styles.sentEmailTxt}>{this.state.emailSentTo}</Text>.
           Please check your email and change your password after logging in.
         </Text>
@@ -46,12 +45,12 @@ class SignupForm extends React.Component {
 
 const validate = values =>
   new Validation(values)
-    .require('email', 'Please enter your email address')
-    .validEmail('email', 'Please enter a valid email address')
+    .require("email", "Please enter your email address")
+    .validEmail("email", "Please enter a valid email address")
     .getErrors();
 
 export default reduxForm({
-  form: 'SignupForm',
+  form: "SignupForm",
   validate
 })(SignupForm);
 
@@ -72,6 +71,6 @@ const styles = StyleSheet.create({
     lineHeight: 30
   },
   sentEmailTxt: {
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
 });

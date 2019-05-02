@@ -6,19 +6,20 @@ import TargetOverlay from './TargetOverlay';
 import NumberedMarker from '../../components/NumberedMarker';
 import Callout from '../../components/Callout';
 import { regionToPolygon } from '../../utils/geo';
+import { navigate } from '../../utils/navigator';
 import { initialRegion, consolidateThreshold } from '../../config/appConfig';
 import { colors } from '../../styles';
 
 class MapView extends React.Component {
-  static navigationOptions = { header: null }
+  static navigationOptions = { header: null };
 
   state = {
     selectLocation: false
-  }
+  };
 
   onAddPressed = () => {
     this.setState({ selectLocation: true });
-  }
+  };
 
   setLocation = () => {
     this.setState({ selectLocation: false });
@@ -31,13 +32,13 @@ class MapView extends React.Component {
         }
       }
     });
-  }
+  };
 
   cancelSetLocation = () => {
     this.setState({ selectLocation: false });
-  }
+  };
 
-  consolidateCloseQuestions = (questions) => {
+  consolidateCloseQuestions = questions => {
     const consolidatedQuestions = [];
 
     questions.forEach(question => {
@@ -45,8 +46,10 @@ class MapView extends React.Component {
       const consolidatedQuestion = consolidatedQuestions.find(consolidated => {
         const lngDiff = Math.abs(consolidated.location.longitude - longitude);
         const latDiff = Math.abs(consolidated.location.latitude - latitude);
-        return lngDiff < this.props.region.longitudeDelta * consolidateThreshold.longitude
-          && latDiff < this.props.region.latitudeDelta * consolidateThreshold.latitude;
+        return (
+          lngDiff < this.props.region.longitudeDelta * consolidateThreshold.longitude &&
+          latDiff < this.props.region.latitudeDelta * consolidateThreshold.latitude
+        );
       });
       if (consolidatedQuestion) {
         consolidatedQuestion.questions.push(question);
@@ -60,9 +63,9 @@ class MapView extends React.Component {
     });
 
     return consolidatedQuestions;
-  }
+  };
 
-  renderMarkers = (questions) => {
+  renderMarkers = questions => {
     const consolidatedQuestions = this.consolidateCloseQuestions(questions);
     return consolidatedQuestions.map(consolidated => {
       let markerRef;
@@ -71,17 +74,18 @@ class MapView extends React.Component {
           key={consolidated.key}
           coordinate={consolidated.location}
           number={consolidated.questions.length}
-          setRef={ref => markerRef = ref}
+          setRef={ref => (markerRef = ref)}
           onPress={() => markerRef.showCallout()}
         >
           <Callout>
-            { consolidated.questions.map(question => ({
+            {consolidated.questions.map(question => ({
               display: question.subject,
               onPress: () => {
                 markerRef.hideCallout();
-                this.props.navigation.navigate('QuestionDetails', { question });
+                console.log('callout pressed');
+                navigate(this.props.navigation, 'QuestionDetails', { question });
               }
-            })) }
+            }))}
           </Callout>
         </NumberedMarker>
       );
@@ -92,27 +96,39 @@ class MapView extends React.Component {
     const { selectLocation } = this.state;
     const { questions } = this.props;
 
-    return <View style={styles.container}>
-      <Map
-        style={styles.map}
-        initialRegion={initialRegion}
-        onRegionChangeComplete={this.props.changeRegion}
-      >
-        {questions && this.renderMarkers(questions)}
-      </Map>
-      { !selectLocation && <TouchableHighlight style={styles.addBtn} onPress={this.onAddPressed}>
-        <Icon name="plus" size={30}/>
-      </TouchableHighlight> }
-      { selectLocation && <TargetOverlay /> }
-      { selectLocation && <View style={styles.setLocationBtns}>
-        <TouchableHighlight style={[styles.setLocationBtn, styles.cancelBtn]} onPress={this.cancelSetLocation}>
-          <Text style={styles.btnText}>Cancel</Text>
-        </TouchableHighlight>
-        <TouchableHighlight style={[styles.setLocationBtn, styles.setBtn]} onPress={this.setLocation}>
-          <Text style={styles.btnText}>Set Location</Text>
-        </TouchableHighlight>
-      </View> }
-    </View>;
+    return (
+      <View style={styles.container}>
+        <Map
+          style={styles.map}
+          initialRegion={initialRegion}
+          onRegionChangeComplete={this.props.changeRegion}
+        >
+          {questions && this.renderMarkers(questions)}
+        </Map>
+        {!selectLocation && (
+          <TouchableHighlight style={styles.addBtn} onPress={this.onAddPressed}>
+            <Icon name="plus" size={30} />
+          </TouchableHighlight>
+        )}
+        {selectLocation && <TargetOverlay />}
+        {selectLocation && (
+          <View style={styles.setLocationBtns}>
+            <TouchableHighlight
+              style={[styles.setLocationBtn, styles.cancelBtn]}
+              onPress={this.cancelSetLocation}
+            >
+              <Text style={styles.btnText}>Cancel</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={[styles.setLocationBtn, styles.setBtn]}
+              onPress={this.setLocation}
+            >
+              <Text style={styles.btnText}>Set Location</Text>
+            </TouchableHighlight>
+          </View>
+        )}
+      </View>
+    );
   }
 }
 
@@ -135,7 +151,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     position: 'absolute',
     bottom: 40,
-    right: 40,
+    right: 40
   },
   setLocationBtns: {
     position: 'absolute',
@@ -152,11 +168,11 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     backgroundColor: 'white',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   btnText: {
     fontSize: 18
-  },
+  }
 });
 
 export default MapView;

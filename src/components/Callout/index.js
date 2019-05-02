@@ -9,25 +9,18 @@ class Callout extends React.Component {
 
     if (Array.isArray(data)) {
       return (
-        <MapCallout>
-          { data.map(({ display, onPress }, index) => {
+        <MapCallout onPress={() => console.log('callout press')}>
+          {data.map(({ display, onPress }, index) => {
             if (display instanceof React.Component) {
               return (
                 <TouchableHighlight key={index} onPress={onPress}>
-                  <View
-                    style={[styles.listItem, index === 0 && styles.firstItem]}
-                  >
-                    {display}
-                  </View>
+                  <View style={[styles.listItem, index === 0 && styles.firstItem]}>{display}</View>
                 </TouchableHighlight>
               );
             }
             return (
-              <TouchableHighlight key={index} onPress={onPress}>
-                <View
-                  style={[styles.listItem, index === 0 && styles.firstItem]}
-                  onPress={onPress}
-                >
+              <TouchableHighlight key={index} onPress={() => console.log('press')}>
+                <View style={[styles.listItem, index === 0 && styles.firstItem]}>
                   <Text style={styles.text}>{display}</Text>
                 </View>
               </TouchableHighlight>
@@ -38,9 +31,19 @@ class Callout extends React.Component {
     }
 
     if (data.display instanceof React.Component) {
-      return <MapCallout onPress={data.onPress}><View style={[styles.listItem, styles.firstItem]}>{data.display}</View></MapCallout>;
+      return (
+        <MapCallout onPress={data.onPress}>
+          <View style={[styles.listItem, styles.firstItem]}>{data.display}</View>
+        </MapCallout>
+      );
     }
-    return <MapCallout onPress={data.onPress}><View style={[styles.listItem, styles.firstItem]}><Text style={styles.text}>{data.display}</Text></View></MapCallout>;
+    return (
+      <MapCallout onPress={data.onPress}>
+        <View style={[styles.listItem, styles.firstItem]}>
+          <Text style={styles.text}>{data.display}</Text>
+        </View>
+      </MapCallout>
+    );
   }
 }
 

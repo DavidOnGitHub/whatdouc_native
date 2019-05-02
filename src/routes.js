@@ -28,5 +28,5 @@ export const Routes = createAppContainer(createSwitchNavigator({
   app: appRoutes,
   auth: authRoutes,
 }, {
-  initialRouteName: 'auth',
+  initialRouteName: 'app',
 }));

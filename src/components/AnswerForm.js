@@ -19,9 +19,7 @@ class AnswerForm extends React.Component {
   };
 
   componentDidMount() {
-    this.props.setSubmitMethod(
-      this.props.handleSubmit(this.props.submitAction)
-    );
+    this.props.setSubmitMethod(this.props.handleSubmit(this.props.submitAction));
     this.contentInput.focus();
   }
 
@@ -35,10 +33,7 @@ class AnswerForm extends React.Component {
           multiline
           uiStyle="bright"
           setRef={ref => (this.contentInput = ref)}
-          style={[
-            styles.answerInput,
-            { height: Math.max(60, this.state.answerInputHeight + 20) }
-          ]}
+          style={[styles.answerInput, { height: Math.max(60, this.state.answerInputHeight + 20) }]}
           onContentSizeChange={this.adjustAnswerInput}
         />
       </View>
@@ -47,9 +42,7 @@ class AnswerForm extends React.Component {
 }
 
 const validate = values =>
-  new Validation(values)
-    .require('content', 'Content cannot be empty.')
-    .getErrors();
+  new Validation(values).require('content', 'Content cannot be empty.').getErrors();
 
 export default reduxForm({
   form: 'AnswerForm',
