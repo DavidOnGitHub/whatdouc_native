@@ -22,7 +22,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -36,6 +35,8 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* whatdouc_nativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* whatdouc_nativeTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		720D280C227C5B3B007F971F /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		720D280E227C5B58007F971F /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 720D280D227C5B58007F971F /* libRNGestureHandler.a */; };
 		725B419922200DCF006C6CFD /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 725B416522200DCE006C6CFD /* Octicons.ttf */; };
 		725B419A22200DCF006C6CFD /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 725B416622200DCE006C6CFD /* Feather.ttf */; };
 		725B419B22200DCF006C6CFD /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 725B416722200DCE006C6CFD /* Entypo.ttf */; };
@@ -54,7 +55,6 @@
 		725B420A222168FF006C6CFD /* libFBSDKCoreKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 725B4209222168FF006C6CFD /* libFBSDKCoreKit.a */; };
 		725B420C222168FF006C6CFD /* libFBSDKLoginKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 725B420B222168FF006C6CFD /* libFBSDKLoginKit.a */; };
 		725B420E222168FF006C6CFD /* libFBSDKShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 725B420D222168FF006C6CFD /* libFBSDKShareKit.a */; };
-		725B4240222171B4006C6CFD /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 725B423F22217191006C6CFD /* libRNGestureHandler.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		E3FA5489B169408CC24780B9 /* libPods-whatdouc_native.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30013229A4431BEAA5595533 /* libPods-whatdouc_native.a */; };
@@ -322,6 +322,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNGestureHandler;
 		};
+		72FA1D27227C589800598DB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 725B423A22217191006C6CFD /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
+			remoteInfo = "RNGestureHandler-tvOS";
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -371,6 +378,7 @@
 		30013229A4431BEAA5595533 /* libPods-whatdouc_native.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-whatdouc_native.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6621024DD9E18F713405025C /* Pods-whatdouc_native.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whatdouc_native.release.xcconfig"; path = "Target Support Files/Pods-whatdouc_native/Pods-whatdouc_native.release.xcconfig"; sourceTree = "<group>"; };
+		720D280D227C5B58007F971F /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		725B416522200DCE006C6CFD /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		725B416622200DCE006C6CFD /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
 		725B416722200DCE006C6CFD /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
@@ -414,14 +422,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				725B4240222171B4006C6CFD /* libRNGestureHandler.a in Frameworks */,
+				720D280E227C5B58007F971F /* libRNGestureHandler.a in Frameworks */,
+				720D280C227C5B3B007F971F /* libReact.a in Frameworks */,
 				725B420A222168FF006C6CFD /* libFBSDKCoreKit.a in Frameworks */,
 				725B420C222168FF006C6CFD /* libFBSDKLoginKit.a in Frameworks */,
 				725B420E222168FF006C6CFD /* libFBSDKShareKit.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
-				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
@@ -582,6 +590,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				720D280D227C5B58007F971F /* libRNGestureHandler.a */,
 				725B4209222168FF006C6CFD /* libFBSDKCoreKit.a */,
 				725B420B222168FF006C6CFD /* libFBSDKLoginKit.a */,
 				725B420D222168FF006C6CFD /* libFBSDKShareKit.a */,
@@ -632,6 +641,7 @@
 			isa = PBXGroup;
 			children = (
 				725B423F22217191006C6CFD /* libRNGestureHandler.a */,
+				72FA1D28227C589800598DB6 /* libRNGestureHandler-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1140,6 +1150,13 @@
 			remoteRef = 725B423E22217191006C6CFD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		72FA1D28227C589800598DB6 /* libRNGestureHandler-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNGestureHandler-tvOS.a";
+			remoteRef = 72FA1D27227C589800598DB6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1409,7 +1426,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.whatdouc-native";
 				PRODUCT_NAME = whatdouc_native;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1428,7 +1445,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.whatdouc-native";
 				PRODUCT_NAME = whatdouc_native;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
