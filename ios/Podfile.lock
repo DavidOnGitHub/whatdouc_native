@@ -115,6 +115,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNCAsyncStorage (1.3.4):
+    - React
   - RNGestureHandler (1.2.1):
     - React
   - RNImageCropPicker (0.24.0):
@@ -149,6 +151,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
@@ -180,6 +183,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNImageCropPicker:
@@ -203,11 +208,12 @@ SPEC CHECKSUMS:
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
   react-native-google-maps: 568cb03d0eae7fef93626f65d05be55642404ed4
   react-native-maps: 0316ed017dbb64b33b227751fa810e2454fcfa39
+  RNCAsyncStorage: 8e31405a9f12fbf42c2bb330e4560bfd79c18323
   RNGestureHandler: aea90f0ad8e35fec23438db6fc3ad79be58bb734
   RNImageCropPicker: 1f22116cbcee5c66f0dea776eb114269afd91b90
   RSKImageCropper: 98296ad26b41753f796b6898d015509598f13d97
   yoga: 2e571f113e8cbeb0eb752aeebc86c1bfe7a8200c
 
-PODFILE CHECKSUM: 432a20084306e9a2bb2513b4beeac4a6613c0f52
+PODFILE CHECKSUM: fc84c65579b3ff2a49c0ad261f6aeae1c14a2145
 
 COCOAPODS: 1.6.0

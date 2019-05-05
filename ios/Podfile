@@ -48,6 +48,8 @@ target 'whatdouc_native' do
   pod 'FBSDKLoginKit', '~> 4.39.1'
   pod 'FBSDKShareKit', '~> 4.39.1'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
 end
 
 post_install do |installer|
